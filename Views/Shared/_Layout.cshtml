@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GetreadyProject</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GetreadyProject.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" />
+    <script src="~/lib/jquery/dist/jquery.slim.min.js"></script>
+    <script src="~/lib/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #006ca5;">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" href="#">GetReady</a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-controller="Courses" asp-action="Index"><i class="fas fa-book"></i> Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#"><i class="fas fa-users"></i> Community</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#"><i class="fas fa-film"></i> Free Documentary</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        @{
+                            var isAuthenticated = User.Identity.IsAuthenticated;
+                        }
+                        @if (isAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <div class="btn-group">
+                                    <a class="btn btn-warning text-dark mr-2" href="@Url.Action("MyCourses", "Account")"><i class="fas fa-graduation-cap"></i> My Courses</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="btn-group ml-2">
+                                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                        <button type="submit" class="nav-link btn btn-success text-white">Logout</button>
+                                    </form>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <div class="btn-group">
+                                    <a class="btn btn-warning text-white" asp-area="Identity" asp-page="/Account/Login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <div class="btn-group ml-2">
+                                    <a class="btn btn-success text-white" asp-area="Identity" asp-page="/Account/Register"><i class="fas fa-user-plus"></i> Register</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="bg-dark text-light mt-4 p-4">
+        <div class="container">
+            <div class="row">
+                <!-- Contact List -->
+                <div class="col-md-4 mb-4">
+                    <h4>Contact</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light" onclick="showContactDetails('email')">Email</a></li>
+                        <li><a href="#" class="text-light" onclick="showContactDetails('phone')">Phone Number</a></li>
+                    </ul>
+                </div>
+
+                <!-- Domains List -->
+                <div class="col-md-4 mb-4">
+                    <h4>Domains</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Domain 1</a></li>
+                        <li><a href="#" class="text-light">Domain 2</a></li>
+                    </ul>
+                </div>
+
+                <!-- Collaborators List -->
+                <div class="col-md-4 mb-4">
+                    <h4>Collaborators</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Collaborator 1</a></li>
+                        <li><a href="#" class="text-light">Collaborator 2</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Phrase and Logo -->
+            <div class="text-center mt-4">
+                <p class="lead text-light">Your Inspiring Phrase Goes Here</p>
+                <img src="path/to/your/logo.png" alt="Logo" class="img-fluid" style="max-width: 100px;">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showContactDetails(type) {
+            // You can implement the logic to show contact details based on the 'type'
+            // For example, display an alert or update a section with contact information
+            alert("Contact details will be shown for: " + type);
+        }
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

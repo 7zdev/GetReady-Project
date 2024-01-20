@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Welcome to Your Online Learning Platform!</h1>
+
+    <!-- Section with Picture and Description -->
+    <section class="mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Image Placeholder with Rounded Corners -->
+                <img src="~/images/bench-accounting-c3v88boorom-unsplash.jpg" class="img-fluid rounded" alt="Sample Image" />
+            </div>
+            <div class="col-md-6">
+                <h2>Discover the Power of Online Learning</h2>
+                <p class="lead">
+                    GetReady is a dynamic learning platform offering a diverse range of courses for individuals at all levels. With an intuitive interface and innovative teaching methods, it provides an engaging educational experience. Stay ahead in your chosen field with GetReady's regularly updated content and flexible, accessible learning options.
+                </p>
+
+                <!-- Two Styled Buttons -->
+                <div class="mt-4">
+                    <a asp-controller="Courses" asp-action="Index" class="btn btn-primary btn-lg mr-2">Go to Courses</a>
+                    <a href="#" class="btn btn-success btn-lg">Become a Teacher</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-4">
+        <div class="row text-center">
+            <!-- Box 1: Number of Students -->
+            <div class="col-md-3">
+                <div class="box bg-primary text-light rounded p-4 mb-4" style="opacity: 0.9;">
+                    <i class="fas fa-users fa-3x mb-2"></i>
+                    <h3 class="display-4">10,000+</h3>
+                    <p class="lead">Students</p>
+                </div>
+            </div>
+
+            <!-- Box 2: Number of Teachers -->
+            <div class="col-md-3">
+                <div class="box bg-primary text-light rounded p-4 mb-4" style="opacity: 0.9;">
+                    <i class="fas fa-chalkboard-teacher fa-3x mb-2"></i>
+                    <h3 class="display-4">500+</h3>
+                    <p class="lead">Teachers</p>
+                </div>
+            </div>
+
+            <!-- Box 3: Number of Courses -->
+            <div class="col-md-3">
+                <div class="box bg-primary text-light rounded p-4 mb-4" style="opacity: 0.9;">
+                    <i class="fas fa-book fa-3x mb-2"></i>
+                    <h3 class="display-4">200+</h3>
+                    <p class="lead">Courses</p>
+                </div>
+            </div>
+
+            <!-- Box 4: Number of Collaborations -->
+            <div class="col-md-3">
+                <div class="box bg-primary text-light rounded p-4 mb-4" style="opacity: 0.9;">
+                    <i class="fas fa-handshake fa-3x mb-2"></i>
+                    <h3 class="display-4">50+</h3>
+                    <p class="lead">Collaborations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+</div>
